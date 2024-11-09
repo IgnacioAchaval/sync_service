@@ -1,15 +1,18 @@
 # database.py
 
-from sqlalchemy import create_engine
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import sessionmaker
-import os
+from sqlalchemy import create_engine  # Import the function to create a SQLAlchemy engine
+from sqlalchemy.ext.declarative import declarative_base  # Import the base class for declarative models
+from sqlalchemy.orm import sessionmaker  # Import the sessionmaker function to create a session factory
+import os  # Import the os module to access environment variables
 
-# Replace with your actual database URL or use environment variables
+# Retrieve the database URL from the environment variable or use a default value
 DATABASE_URL = os.getenv('DATABASE_URL', 'postgresql://user:password@hostname/dbname')
 
+# Create the SQLAlchemy engine that will interface with the PostgreSQL database
 engine = create_engine(DATABASE_URL)
 
+# Create a configured "Session" class
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
+# Create a base class for our ORM models
 Base = declarative_base()

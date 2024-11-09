@@ -1,9 +1,13 @@
+#This file defines Pydantic models (schemas) for request validation and serialization. These schemas correspond to the data structures expected from the mobile app.
+
+
 # schemas.py
 
-from pydantic import BaseModel
-from typing import List, Optional
-from datetime import datetime, time
+from pydantic import BaseModel  # Import BaseModel from Pydantic for creating data models
+from typing import List, Optional  # Import typing utilities
+from datetime import datetime, time  # Import datetime and time classes
 
+# Define the RiverRegister schema
 class RiverRegister(BaseModel):
     id: int
     register_metadata_id: int
@@ -32,6 +36,7 @@ class RiverRegister(BaseModel):
     water_color: str
     turbidity: float
 
+# Define the RegisterMetadata schema
 class RegisterMetadata(BaseModel):
     id: int
     arrival_time: datetime
@@ -40,17 +45,20 @@ class RegisterMetadata(BaseModel):
     longitude: float
     observations: str
 
+# Define the Device schema
 class Device(BaseModel):
     id: int
     make: str
     model: str
     belonging: str
 
+# Define the DeviceRegisterCrossRef schema
 class DeviceRegisterCrossRef(BaseModel):
     device_id: int
     register_metadata_id: int
     device_category: str
 
+# Define the Persona schema
 class Persona(BaseModel):
     id: int
     first_name: str
@@ -58,11 +66,13 @@ class Persona(BaseModel):
     dni: str
     affiliation: str
 
+# Define the PersonaRegisterCrossRef schema
 class PersonaRegisterCrossRef(BaseModel):
     persona_id: int
     register_metadata_id: int
     role: str
 
+# Define the Profile schema
 class Profile(BaseModel):
     id: int
     site_id: int
@@ -72,6 +82,7 @@ class Profile(BaseModel):
     stratification_criteria: str
     stratification_description: str
 
+# Define the Sample schema
 class Sample(BaseModel):
     id: int
     number: int
@@ -80,20 +91,24 @@ class Sample(BaseModel):
     profile_id: int
     observations: str
 
+# Define the Site schema
 class Site(BaseModel):
     id: int
     site: str
     abbreviation: str
 
+# Define the Vegetation schema
 class Vegetation(BaseModel):
     id: int
     name: str
-    context: str
+    context: str  # Context can be 'SHORE' or 'WATER'
 
+# Define the VegetationRegisterCrossRef schema
 class VegetationRegisterCrossRef(BaseModel):
     river_register_id: int
     vegetation_id: int
 
+# Define the main request schema for RiverRegister
 class RiverRegisterRequest(BaseModel):
     river_register: RiverRegister
     register_metadata: RegisterMetadata
