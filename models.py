@@ -1,4 +1,4 @@
-#This file defines the SQLAlchemy ORM models that map to the PostgreSQL database tables. Each class corresponds to a table in the database schema you provided.
+#This file defines the SQLAlchemy ORM models that map to the PostgreSQL database tables. Each class corresponds to a table in the database schema.
 
 # models.py
 

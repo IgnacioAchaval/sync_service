@@ -1,3 +1,5 @@
+#This file handles the database connection using SQLAlchemy. It sets up the engine, session, and base declarative class to interact with the PostgreSQL database.
+
 # database.py
 
 from sqlalchemy import create_engine  # Import the function to create a SQLAlchemy engine
@@ -6,7 +8,7 @@ from sqlalchemy.orm import sessionmaker  # Import the sessionmaker function to c
 import os  # Import the os module to access environment variables
 
 # Retrieve the database URL from the environment variable or use a default value
-DATABASE_URL = os.getenv('DATABASE_URL', 'postgresql://user:password@hostname/dbname')
+DATABASE_URL = os.getenv('DATABASE_URL', 'postgresql://postgres:mypassword@localhost:5432/pidatabase')
 
 # Create the SQLAlchemy engine that will interface with the PostgreSQL database
 engine = create_engine(DATABASE_URL)
